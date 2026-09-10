@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b1013" />
+    <title>Pigstep Vibes | Minecraft music discs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="./" aria-label="Discothèque home">
+          <span class="brand-mark" aria-hidden="true">◈</span>
+          <span>PIGSTEP VIBES</span>
+        </a>
+        <div class="status-pill"><span class="status-dot"></span><span id="statusText">READY TO PLAY</span></div>
+      </header>
+
+      <section class="hero" aria-labelledby="pageTitle">
+        <p class="eyebrow">MINECRAFT / MUSIC ARCHIVE</p>
+        <h1 id="pageTitle">Put a disc on.</h1>
+        <p class="intro">A pocket jukebox for every overworld mood.<br />Pick a square and let the blocky soundtrack roll.</p>
+      </section>
+
+      <section class="now-playing" aria-live="polite">
+        <div class="now-playing-copy">
+          <span class="label">NOW PLAYING</span>
+          <strong id="currentTitle">Choose a disc</strong>
+        </div>
+        <button class="stop-button" id="stopButton" type="button" aria-label="Stop current track" disabled>
+          <span class="stop-icon" aria-hidden="true"></span>
+          <span>STOP</span>
+        </button>
+      </section>
+
+      <section class="disc-grid" id="discGrid" aria-label="Minecraft music discs"></section>
+
+      <footer class="footer">
+        <span>19 TRACKS / ONE JUKEBOX</span>
+        <span>USE HEADPHONES FOR THE FULL BLOCKS</span>
+      </footer>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>

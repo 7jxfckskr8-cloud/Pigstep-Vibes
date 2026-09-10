@@ -1,0 +1,30 @@
+{
+  "name": "pigstep-vibes",
+  "version": "1.0.0",
+  "description": "A Minecraft music disc jukebox",
+  "main": "main.cjs",
+  "author": "Discotheque",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "electron .",
+    "package:mac": "electron-builder --mac --x64 --arm64"
+  },
+  "devDependencies": {
+    "electron": "^38.1.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.discotheque.jukebox",
+    "productName": "Pigstep Vibes",
+    "files": [
+      "index.html",
+      "styles.css",
+      "app.js",
+      "main.cjs"
+    ],
+    "mac": {
+      "category": "public.app-category.music",
+      "target": ["dmg", "zip"]
+    }
+  }
+}

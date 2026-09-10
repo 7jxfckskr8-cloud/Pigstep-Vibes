@@ -1,0 +1,85 @@
+:root {
+  --ink: #e9eee9;
+  --muted: #86918d;
+  --line: rgba(233, 238, 233, 0.14);
+  --panel: #11191c;
+  --panel-light: #182326;
+  --lime: #d2f34b;
+  --orange: #ff8a4d;
+  --blue: #6cc3e8;
+  --pink: #f38ab8;
+  --yellow: #f6c857;
+  --shadow: rgba(0, 0, 0, 0.28);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  min-width: 320px;
+  margin: 0;
+  color: var(--ink);
+  background: #0b1013;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  content: "";
+  opacity: 0.24;
+  background-image: linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: linear-gradient(to bottom, black, transparent 80%);
+}
+
+.app-shell { width: min(1240px, calc(100% - 64px)); margin: 0 auto; padding: 30px 0 32px; }
+.topbar, .footer, .now-playing { display: flex; align-items: center; justify-content: space-between; }
+.topbar { padding-bottom: 70px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-decoration: none; }
+.brand-mark { display: grid; width: 24px; height: 24px; place-items: center; color: #0b1013; background: var(--lime); font-size: 13px; transform: rotate(45deg); }
+.brand-mark::first-letter { transform: rotate(-45deg); }
+.status-pill { display: flex; align-items: center; gap: 8px; color: var(--muted); font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: 0.08em; }
+.status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 12px var(--lime); }
+
+.hero { max-width: 620px; padding-bottom: 58px; }
+.eyebrow, .label, .footer { color: var(--muted); font-family: "DM Mono", monospace; font-size: 10px; letter-spacing: 0.12em; }
+.eyebrow { margin: 0 0 20px; color: var(--lime); }
+h1 { margin: 0 0 18px; font-size: clamp(52px, 8vw, 100px); font-weight: 700; letter-spacing: -0.07em; line-height: 0.88; }
+.intro { margin: 0; color: #aeb8b3; font-size: 16px; line-height: 1.55; }
+
+.now-playing { min-height: 82px; margin-bottom: 24px; padding: 18px 20px; border: 1px solid var(--line); background: rgba(17, 25, 28, 0.76); }
+.now-playing-copy { display: grid; gap: 7px; }
+.now-playing strong { font-size: 17px; font-weight: 600; }
+.stop-button { display: inline-flex; align-items: center; gap: 9px; min-height: 40px; padding: 0 14px; border: 1px solid var(--line); color: var(--ink); background: transparent; font: 500 10px "DM Mono", monospace; letter-spacing: 0.08em; cursor: pointer; }
+.stop-button:hover:not(:disabled) { border-color: var(--lime); color: var(--lime); }
+.stop-button:disabled { cursor: default; opacity: 0.35; }
+.stop-icon { width: 10px; height: 10px; background: currentColor; }
+
+.disc-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+.disc-card { position: relative; min-width: 0; aspect-ratio: 1; padding: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.12); color: #0b1013; background: var(--disc-color); box-shadow: 0 12px 24px var(--shadow); cursor: pointer; text-align: left; transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease; }
+.disc-card::before, .disc-card::after { position: absolute; content: ""; pointer-events: none; }
+.disc-card::before { width: 74%; height: 74%; right: -18%; bottom: -19%; border: 1px solid rgba(11,16,19,0.24); border-radius: 50%; box-shadow: 0 0 0 12px rgba(11,16,19,0.08), 0 0 0 24px rgba(11,16,19,0.06); }
+.disc-card::after { right: 18px; bottom: 18px; width: 14px; height: 14px; border: 1px solid rgba(11,16,19,0.35); border-radius: 50%; background: var(--disc-color); }
+.disc-card:hover { z-index: 1; filter: saturate(1.1); transform: translateY(-5px) rotate(-1deg); box-shadow: 0 20px 32px var(--shadow); }
+.disc-card:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+.disc-card.is-playing { outline: 3px solid var(--lime); outline-offset: -3px; transform: translateY(-5px); }
+.disc-number { position: relative; z-index: 1; font: 500 11px "DM Mono", monospace; opacity: 0.7; }
+.disc-name { position: absolute; z-index: 1; right: 16px; bottom: 15px; left: 16px; max-width: 80%; font-size: clamp(15px, 2vw, 22px); font-weight: 700; letter-spacing: -0.05em; line-height: 0.95; }
+
+.footer { gap: 18px; padding-top: 30px; }
+@media (max-width: 760px) {
+  .app-shell { width: min(100% - 32px, 580px); padding-top: 20px; }
+  .topbar { padding-bottom: 56px; }
+  .disc-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+  .disc-card { padding: 11px; }
+  .disc-card::after { right: 11px; bottom: 11px; }
+  .disc-name { right: 11px; bottom: 11px; left: 11px; font-size: 15px; }
+  .footer { align-items: flex-start; flex-direction: column; gap: 8px; }
+}
+@media (max-width: 410px) {
+  .status-pill { display: none; }
+  h1 { font-size: 58px; }
+  .disc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
